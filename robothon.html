@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robotics Competition</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="style1.css" rel="stylesheet">
+    <style>
+   
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <!-- OPTIMIZED NAVIGATION -->
+    <nav class="nav">
+        <a href="index.html" class="nav-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Home
+        </a>
+        
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            ☰
+        </button>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#tracks" class="nav-link">Tracks</a>
+            <a href="#coordinators" class="nav-link">Coordinators</a>
+            <a href="mindbender.html" class="nav-cta">Project Showcasing</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Animated Landing -->
+    <section class="hero">
+        <h1 class="hero-title">Robotic Competition</h1>
+        <p class="hero-subtitle">Step into the spotlight and showcase your most groundbreaking projects! Connect with industry experts, inspire the tech community with your creativity, and shape the future of innovation.</p>
+        
+        <div class="register-container">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvPFBdFi6otanBzG2ar-2pKtmhjWGJ3SmzYaKkDrECr-CHNw/viewform" class="button">
+                <span class="fold"></span>
+                <div class="points_wrapper">
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                    <i class="point"></i>
+                </div>
+                <span class="inner">
+                    REGISTER NOW
+                </span>
+            </a>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 5v14m-7-7l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="tracks">
+            <h2 class="section-title">Competition Tracks</h2>
+
+            <div class="tracks-container">
+                <div class="track-card">
+                    <h2 class="track-title">🚗 Autonomous Vehicle Challenge</h2>
+                    <p class="track-description">Develop an autonomous car that navigates a predefined path while dynamically avoiding obstacles</p>
+                </div>
+                <div class="track-card">
+                    <h2 class="track-title">♻🤖 Waste Sorting Robot Challenge</h2>
+                    <p class="track-description">Build a robot capable of autonomously sorting recyclable materials (plastic, paper, metal) from mixed waste</p>
+                </div>
+                <div class="track-card">
+                    <h2 class="track-title">🚁🔍 Drone Raceing</h2>
+                    <p class="track-description">Create a drone system designed for rapid location of missing individuals in challenging or dangerous environments</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="coordinators" class="coordinators-section">
+            <h2 class="coordinators-heading">Event Coordinators</h2>
+            <div class="coordinators-container">
+                <!-- Faculty Coordinator -->
+                <div class="coordinator-card">
+                    <div class="coordinator-blob"></div>
+                    <div class="coordinator-bg">
+                        <div class="coordinator-role">Faculty Coordinator</div>
+                        <div class="coordinator-name">Dr. Rakhi Dua </div>
+                    </div>
+                </div>
+
+                <!-- Student Coordinators -->
+                <div class="coordinator-card">
+                    <div class="coordinator-blob" style="background-color: #4f46e5;"></div>
+                    <div class="coordinator-bg">
+                        <div class="coordinator-role">Student Coordinators</div>
+                        <div class="coordinator-name">MR.Varun Kumar[9717541200]</div>
+                        <div class="coordinator-name">MR.Bhaumik Senwal</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 RoboRush. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Modified Intersection Observer for bidirectional animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // When element enters viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    entry.target.classList.remove('fade-out');
+                } 
+                // When element leaves viewport
+                else {
+                    entry.target.classList.remove('fade-in');
+                    entry.target.classList.add('fade-out');
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '-100px 0px'
+        });
+
+        // Observe section titles
+        document.querySelectorAll('.section-title').forEach(title => {
+            observer.observe(title);
+        });
+
+        // Observe track cards with staggered delay
+        document.querySelectorAll('.track-card').forEach((card, index) => {
+            card.style.transitionDelay = `${0.2 * index}s`;
+            observer.observe(card);
+        });
+
+        // Observe coordinator section
+        observer.observe(document.querySelector('.coordinators-section'));
+
+        // Observe coordinator cards with staggered delay
+        document.querySelectorAll('.coordinator-card').forEach((card, index) => {
+            card.style.transitionDelay = `${0.3 * index}s`;
+            observer.observe(card);
+        });
+
+        // Close mobile menu when resizing to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
