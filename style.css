@@ -69,7 +69,7 @@ body {
 /* Cyberpunk Text Effect */
 .banner .content h1 {
   font-family: 'ICA Rubrik', sans-serif;
-  font-size: clamp(4rem, 15vw, 12rem);
+  font-size: clamp(3rem, 13vw, 10rem);
   line-height: 1;
   position: relative;
   color: transparent;
